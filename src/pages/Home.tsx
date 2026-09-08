@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { ToastContainer } from "react-toastify";
 import AvailableAndSelectedContainer from "../components/AvailableAndSelectedContainer";
 import Banner from "../components/Banner";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import type { Player } from "../type/type";
 import Loading from "./Loading";
@@ -24,7 +25,7 @@ const Home = () => {
           <AvailableAndSelectedContainer players={loadData()} />
         </Suspense>
       </main>
-      <h3 className="font-bold text-5xl">Footer</h3>
+      <Footer />
     </div>
   );
 };
