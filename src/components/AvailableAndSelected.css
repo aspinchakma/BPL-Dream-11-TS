@@ -1,0 +1,9 @@
+.clickedButton {
+  background: #e7fe29;
+  font-weight: bold;
+  padding: 14px 30px;
+}
+.nonClickedButton {
+  color: #717171;
+  padding: 14px 30px;
+}
