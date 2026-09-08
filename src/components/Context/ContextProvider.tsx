@@ -8,15 +8,17 @@ interface ContextProviderProps {
 interface PlayerContextType {
   name: string;
   handleAddCoin: () => void;
+  coins: number;
 }
 // context name
 export const PlayersContext = createContext<PlayerContextType | null>(null);
 
 const ContextProvider = ({ children }: ContextProviderProps) => {
-  const [coins, setCoins] = useState();
+  const [coins, setCoins] = useState<number>(0);
 
   // add coin
   const handleAddCoin = (): void => {
+    setCoins(coins + 50000);
     toast.success("Successfully Added 50,000TK!", {
       position: "bottom-right",
       autoClose: 1000,
@@ -31,7 +33,7 @@ const ContextProvider = ({ children }: ContextProviderProps) => {
   };
   const name = "Aspin Chakma";
   return (
-    <PlayersContext.Provider value={{ name, handleAddCoin }}>
+    <PlayersContext.Provider value={{ name, handleAddCoin, coins }}>
       {children}
     </PlayersContext.Provider>
   );
