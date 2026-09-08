@@ -5,4 +5,8 @@ export interface Player {
   image: string;
   role: string;
   bowling: string;
+  rating: number;
+  batting: string;
+  about: string;
+  biddingPrice: number;
 }
