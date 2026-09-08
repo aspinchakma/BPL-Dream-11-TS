@@ -2,7 +2,7 @@ import navLogo from "../assets/logo.png";
 
 const Header = () => {
   return (
-    <div className="backdrop-blur-lg fixed top-0 w-full py-3">
+    <div className="backdrop-blur-lg fixed top-0 w-full py-3 z-10">
       <div className="w-[85%] mx-auto flex items-center justify-between ">
         <img className="h-[65px]" src={navLogo} alt="" />
         <div className=" flex items-center gap-5">
