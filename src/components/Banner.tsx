@@ -6,8 +6,7 @@ import { PlayersContext } from "./Context/ContextProvider";
 const Banner = () => {
   const context = useContext(PlayersContext);
   if (!context) return null;
-  const { name } = context;
-  console.log(name);
+  const { handleAddCoin } = context;
   return (
     <div
       style={{
@@ -25,7 +24,10 @@ const Banner = () => {
         Beyond Boundaries Beyond Limits
       </p>
       <div className="border-2 border-[#d7ec27] p-2 rounded-xl w-fit mx-auto">
-        <button className="bg-[#d7ec27] font-bold rounded-xl px-5 py-3 cursor-pointer hover:text-[#d7ec27] transition duration-500 hover:bg-transparent">
+        <button
+          onClick={handleAddCoin}
+          className="bg-[#d7ec27] font-bold rounded-xl px-5 py-3 cursor-pointer hover:text-[#d7ec27] transition duration-500 hover:bg-transparent"
+        >
           Claim Free Credit
         </button>
       </div>
