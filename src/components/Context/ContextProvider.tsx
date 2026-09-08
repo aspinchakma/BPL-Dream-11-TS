@@ -7,7 +7,7 @@ interface ContextProviderProps {
   children: ReactNode;
 }
 interface PlayerContextType {
-  name: string;
+  handleDeletePlayer: (playerDetails: Player) => void;
   handleAddCoin: () => void;
   coins: number;
   handleSelectedPlayer: (player: Player) => void;
@@ -19,7 +19,7 @@ interface PlayerContextType {
 export const PlayersContext = createContext<PlayerContextType | null>(null);
 
 const ContextProvider = ({ children }: ContextProviderProps) => {
-  const [coins, setCoins] = useState<number>(0);
+  const [coins, setCoins] = useState<number>(200000);
   const [selectedPlayers, setSelectedPlayers] = useState<Player[]>([]);
   const [players, setPlayers] = useState<Player[]>([]);
 
@@ -38,7 +38,6 @@ const ContextProvider = ({ children }: ContextProviderProps) => {
       transition: Bounce,
     });
   };
-  console.log("from context", players);
   // add selected player
   const handleSelectedPlayer = (playerDetails: Player): void => {
     if (coins > playerDetails.biddingPrice) {
@@ -102,18 +101,47 @@ const ContextProvider = ({ children }: ContextProviderProps) => {
       });
     }
   };
-  const name = "Aspin Chakma";
-  console.log(selectedPlayers.length);
+  const handleDeletePlayer = (playerDetails: Player): void => {
+    // update coins
+    setCoins(coins + Number(playerDetails.biddingPrice));
+    // update available
+    const updateAvaiableArray = [...players].map((ply) => {
+      if (ply.id === playerDetails.id) {
+        return {
+          ...ply,
+          isAvailable: true,
+        };
+      }
+      return ply;
+    });
+    setPlayers(updateAvaiableArray);
+    // update selected players: remove this players
+    const remainSelectedPlayers = [...selectedPlayers].filter(
+      (ply) => ply.id !== playerDetails.id,
+    );
+    setSelectedPlayers(remainSelectedPlayers);
+    toast.info("Successfully Deleted!", {
+      position: "bottom-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
   return (
     <PlayersContext.Provider
       value={{
-        name,
         handleAddCoin,
         coins,
         handleSelectedPlayer,
         players: players,
         setPlayers: setPlayers,
         selectedPlayers: selectedPlayers,
+        handleDeletePlayer: handleDeletePlayer,
       }}
     >
       {children}

@@ -26,7 +26,6 @@ const AvailableAndSelectedContainer = ({ players }: PlayersProps) => {
   useEffect(() => {
     setPlayers(playersArray);
   }, [playersArray]);
-  console.log(selectedPlayers.length);
   return (
     <div className=" my-16">
       <div className="flex items-center justify-between">
