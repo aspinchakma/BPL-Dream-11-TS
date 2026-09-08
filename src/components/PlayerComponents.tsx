@@ -49,7 +49,7 @@ const PlayerComponents = ({ player }: { player: Player }) => {
             </span>
           ) : (
             <span className="text-sm bg-red-100 text-red-700 px-3 py-1 rounded-full">
-              Available
+              Not Available
             </span>
           )}
         </div>
@@ -82,8 +82,9 @@ const PlayerComponents = ({ player }: { player: Player }) => {
           </div>
 
           <button
+            disabled={!player.isAvailable}
             onClick={() => handleSelectedPlayer(player)}
-            className="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-semibold  active:scale-95 transition cursor-pointer hover:text-indigo-600 duration-500 hover:bg-white border-2 border-indigo-600"
+            className="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-semibold  active:scale-95 transition cursor-pointer hover:text-indigo-600 duration-500 hover:bg-white border-2 border-indigo-600 disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed disabled:opacity-60 disabled:border-white"
           >
             Choose Player
           </button>
