@@ -1,7 +1,13 @@
+import { useContext } from "react";
 import bannerIMG from "../assets/banner-main.png";
 import heroBg from "../assets/bg-shadow.png";
+import { PlayersContext } from "./Context/ContextProvider";
 
 const Banner = () => {
+  const context = useContext(PlayersContext);
+  if (!context) return null;
+  const { name } = context;
+  console.log(name);
   return (
     <div
       style={{
