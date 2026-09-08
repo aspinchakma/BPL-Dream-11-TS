@@ -1,6 +1,7 @@
-import { use, useState } from "react";
+import { use, useContext, useEffect, useState } from "react";
 import type { Player } from "../type/type";
 import "./AvailableAndSelected.css";
+import { PlayersContext } from "./Context/ContextProvider";
 import Players from "./Players";
 import Selected from "./Selected";
 
@@ -10,6 +11,7 @@ interface PlayersProps {
 
 const AvailableAndSelectedContainer = ({ players }: PlayersProps) => {
   const playersArray = use(players);
+  const context = useContext(PlayersContext);
   const [isAvailable, setIsAvailable] = useState(true);
   const avaiableButtonClick = () => {
     setIsAvailable(true);
@@ -17,6 +19,14 @@ const AvailableAndSelectedContainer = ({ players }: PlayersProps) => {
   const selectedButtonClick = () => {
     setIsAvailable(false);
   };
+  if (!context) return null;
+
+  const { setPlayers } = context;
+
+  useEffect(() => {
+    setPlayers(playersArray);
+  }, [playersArray]);
+
   return (
     <div className=" my-16">
       <div className="flex items-center justify-between">
@@ -45,7 +55,7 @@ const AvailableAndSelectedContainer = ({ players }: PlayersProps) => {
         </div>
       </div>
       <div className="min-h-screen mt-10">
-        {isAvailable ? <Players players={playersArray} /> : <Selected />}
+        {isAvailable ? <Players /> : <Selected />}
       </div>
     </div>
   );
