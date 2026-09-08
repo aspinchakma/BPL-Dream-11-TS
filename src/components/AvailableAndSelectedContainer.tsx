@@ -59,9 +59,7 @@ const AvailableAndSelectedContainer = ({ players }: PlayersProps) => {
           </button>
         </div>
       </div>
-      <div className="min-h-screen mt-10">
-        {isAvailable ? <Players /> : <Selected />}
-      </div>
+      <div className=" mt-10 ">{isAvailable ? <Players /> : <Selected />}</div>
     </div>
   );
 };
