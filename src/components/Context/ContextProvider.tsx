@@ -13,6 +13,7 @@ interface PlayerContextType {
   handleSelectedPlayer: (player: Player) => void;
   players: Player[];
   setPlayers: React.Dispatch<React.SetStateAction<Player[]>>;
+  selectedPlayers: Player[];
 }
 // context name
 export const PlayersContext = createContext<PlayerContextType | null>(null);
@@ -112,6 +113,7 @@ const ContextProvider = ({ children }: ContextProviderProps) => {
         handleSelectedPlayer,
         players: players,
         setPlayers: setPlayers,
+        selectedPlayers: selectedPlayers,
       }}
     >
       {children}

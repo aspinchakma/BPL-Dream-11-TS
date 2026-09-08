@@ -21,12 +21,12 @@ const AvailableAndSelectedContainer = ({ players }: PlayersProps) => {
   };
   if (!context) return null;
 
-  const { setPlayers } = context;
+  const { setPlayers, selectedPlayers } = context;
 
   useEffect(() => {
     setPlayers(playersArray);
   }, [playersArray]);
-
+  console.log(selectedPlayers.length);
   return (
     <div className=" my-16">
       <div className="flex items-center justify-between">
@@ -35,7 +35,10 @@ const AvailableAndSelectedContainer = ({ players }: PlayersProps) => {
             <h2 className="font-bold text-3xl">Available Players</h2>
           ) : (
             <h2 className="font-bold text-3xl flex gap-2 items-center">
-              Selected Players <span>()</span>
+              Selected Players{" "}
+              {selectedPlayers.length > 0 && (
+                <span>({selectedPlayers.length})</span>
+              )}
             </h2>
           )}
         </div>
@@ -50,7 +53,10 @@ const AvailableAndSelectedContainer = ({ players }: PlayersProps) => {
             onClick={selectedButtonClick}
             className={`cursor-pointer rounded-tr-xl rounded-br-xl ${isAvailable ? "nonClickedButton" : "clickedButton"} border-2 border-[#e7e7e7] flex items-center gap-2`}
           >
-            Selected <span>(0)</span>
+            Selected{" "}
+            {selectedPlayers.length > 0 && (
+              <span>({selectedPlayers.length})</span>
+            )}
           </button>
         </div>
       </div>
