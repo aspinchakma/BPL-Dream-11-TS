@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import { FaFlag, FaStar } from "react-icons/fa";
 import { MdSportsCricket } from "react-icons/md";
 import type { Player } from "../type/type";
+import { PlayersContext } from "./Context/ContextProvider";
 
 const PlayerComponents = ({ player }: { player: Player }) => {
+  const context = useContext(PlayersContext);
+  if (!context) return null;
+  const { handleSelectedPlayer } = context;
   return (
     <div className="rounded-3xl overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
       {/* Image */}
@@ -38,9 +43,15 @@ const PlayerComponents = ({ player }: { player: Player }) => {
             <span className="font-medium">{player.role}</span>
           </div>
 
-          <span className="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full">
-            Available
-          </span>
+          {player.isAvailable ? (
+            <span className="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full">
+              Available
+            </span>
+          ) : (
+            <span className="text-sm bg-red-100 text-red-700 px-3 py-1 rounded-full">
+              Available
+            </span>
+          )}
         </div>
 
         {/* Skills */}
@@ -70,7 +81,10 @@ const PlayerComponents = ({ player }: { player: Player }) => {
             </h3>
           </div>
 
-          <button className="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-semibold  active:scale-95 transition cursor-pointer hover:text-indigo-600 duration-500 hover:bg-white border-2 border-indigo-600">
+          <button
+            onClick={() => handleSelectedPlayer(player)}
+            className="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-semibold  active:scale-95 transition cursor-pointer hover:text-indigo-600 duration-500 hover:bg-white border-2 border-indigo-600"
+          >
             Choose Player
           </button>
         </div>

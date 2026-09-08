@@ -9,4 +9,5 @@ export interface Player {
   batting: string;
   about: string;
   biddingPrice: number;
+  isAvailable: boolean;
 }
