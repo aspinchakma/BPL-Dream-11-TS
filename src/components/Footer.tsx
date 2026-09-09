@@ -4,7 +4,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#06091A] text-white pt-32 lg:pt-56 pb-4">
+    <footer className="bg-[#06091A] text-white pt-56 pb-4">
       <img
         className="mx-auto max-w-[80%] sm:max-w-full"
         src={FooterLogo}
