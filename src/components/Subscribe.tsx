@@ -2,7 +2,7 @@ import bg from "../assets/bg-shadow.png";
 
 const Subscribe = () => {
   return (
-    <div className="border-2 border-[#dcdcdc] p-4 lg:p-6 rounded-2xl absolute translate-y-[-50%] w-full">
+    <div className="border-2 border-[#dcdcdc] p-2 lg:p-6 rounded-2xl absolute translate-y-[-50%] w-full">
       <div
         style={{ backgroundImage: `url(${bg})`, backgroundRepeat: "no-repeat" }}
         className="mx-auto py-12 lg:py-24 rounded-2xl bg-white p-3 lg:px-2"
