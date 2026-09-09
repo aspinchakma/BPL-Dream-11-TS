@@ -27,8 +27,8 @@ const AvailableAndSelectedContainer = ({ players }: PlayersProps) => {
     setPlayers(playersArray);
   }, [playersArray]);
   return (
-    <div className="mb-64 lg:mt-40 mt-24 border border-black">
-      <div className="flex items-center justify-between flex-col gap-4">
+    <div className="mb-64 lg:mt-40 mt-24">
+      <div className="flex items-center justify-between flex-col lg:flex-row gap-4">
         <div className="flex items-center gap-4">
           {isAvailable ? (
             <h2 className="font-bold text-3xl">Available Players</h2>
