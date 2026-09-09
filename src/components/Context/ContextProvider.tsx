@@ -60,7 +60,21 @@ const ContextProvider = ({ children }: ContextProviderProps) => {
             }
             return ply;
           });
+
           setPlayers(updatedAvailableStatus);
+
+          // showing toast
+          toast.success(`${playerDetails.name} selected!`, {
+            position: "bottom-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
         } else {
           toast.error("Already Selected!", {
             position: "bottom-right",
