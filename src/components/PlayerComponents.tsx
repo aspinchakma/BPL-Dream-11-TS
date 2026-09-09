@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { useContext } from "react";
 import { FaFlag, FaStar } from "react-icons/fa";
 import { MdSportsCricket } from "react-icons/md";
@@ -9,7 +10,27 @@ const PlayerComponents = ({ player }: { player: Player }) => {
   if (!context) return null;
   const { handleSelectedPlayer } = context;
   return (
-    <div className="rounded-3xl overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 30,
+        filter: "blur(5px)",
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+      }}
+      transition={{
+        duration: 1.5,
+        ease: "easeOut",
+      }}
+      viewport={{
+        once: false,
+        amount: 0.09,
+      }}
+      className="rounded-3xl overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+    >
       {/* Image */}
       <div className="relative">
         <img
@@ -90,7 +111,7 @@ const PlayerComponents = ({ player }: { player: Player }) => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
